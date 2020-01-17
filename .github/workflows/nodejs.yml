@@ -21,3 +21,17 @@ jobs:
           npm install
           npm test
           npm run build
+      - name: Wechat Work Robot Message
+        uses: fifsky/wechat-work-action@v0.0.1
+        with:
+          url: ${{ secrets.WECHATWORK_WEBHOOK}}
+          type: markdown
+          content: |
+            # Tips
+            ## Hello
+            > from github action message
+            > ^_^
+            - repository: ${{ github.repository }}
+            - committer: ${{ github.actor }}
+            - compare: [view](${{ github.event.compare }})
+            - job status: ${{ job.status }}

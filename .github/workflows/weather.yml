@@ -1,0 +1,31 @@
+name: 'GitHub Actions Weather Bot'
+
+on:
+  push:
+  schedule:
+    - cron: '0 21 * * *'
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout codes'
+        uses: actions/checkout@v1
+      - name: 'Get Weather'
+        run: bash ./weather.sh
+      - name: 'Get Date'
+        run: echo "::set-env name=REPORT_DATE::$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')"
+      - name: Read template from file
+        id: template
+        uses: traversals-analytics-and-intelligence/file-reader-action@master
+        with:
+          file: ./result.html
+      - name: Get the template output
+        run: echo "${{ steps.template.outputs.content }}"
+      - name: Wechat Work Robot Message
+        uses: fifsky/wechat-work-action@v0.0.1
+        with:
+          url: ${{ secrets.WECHATWORK_WEBHOOK}}
+          type: markdown
+          content: |
+            ${{ steps.template.outputs.content }}

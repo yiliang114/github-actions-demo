@@ -1,7 +1,6 @@
 name: 'GitHub Actions Weather Bot'
 
 on:
-  push:
   schedule:
     - cron: '0 21 * * *'
 
@@ -11,7 +10,7 @@ jobs:
     name: A job to gain sum of github commits today
     steps:
       - name: gain sum of github commits today
-        uses: yiliang114/commit times@v0.1.3
+        uses: yiliang114/commit-times@master
         id: commit
         with:
           username: 'yiliang114'

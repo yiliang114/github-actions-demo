@@ -1,18 +1,18 @@
-name: 'GitHub Actions Weather Bot'
+name: "GitHub Actions Weather Bot"
 
 on:
   schedule:
-    - cron: '0 21 * * *'
+    - cron: "0 21 * * *"
 
 jobs:
   bot:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout codes'
+      - name: "Checkout codes"
         uses: actions/checkout@v1
-      - name: 'Get Weather'
+      - name: "Get Weather"
         run: bash ./weather.sh
-      - name: 'Get Date'
+      - name: "Get Date"
         run: echo "::set-env name=REPORT_DATE::$(TZ=':Asia/Shenzhen' date '+%Y-%m-%d %T')"
       - name: Read template from file
         id: template

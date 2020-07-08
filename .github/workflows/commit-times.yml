@@ -1,7 +1,6 @@
 name: 'Commit Times Daily Bot'
 
 on:
-  push:
   schedule:
     - cron: '0 12 * * *'
 

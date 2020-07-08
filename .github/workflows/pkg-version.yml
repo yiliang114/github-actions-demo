@@ -20,4 +20,4 @@ jobs:
           url: ${{ secrets.WECHATWORK_WEBHOOK}}
           type: markdown
           content: |
-            pkg-version .version }}
+            pkg-version action version: ${{ steps.commit.pkgVersion.version }}

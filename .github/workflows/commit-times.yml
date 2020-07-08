@@ -16,7 +16,7 @@ jobs:
         with:
           username: 'yiliang114'
       - name: Get the output sum
-        run: echo "Today ${{ steps.test.outputs.username }} has committed ${{ steps.test.outputs.sum }} times."
+        run: echo "Today ${{ steps.commit.outputs.username }} has committed ${{ steps.commit.outputs.sum }} times."
       - name: Wechat Work Robot Message
         uses: fifsky/wechat-work-action@v0.0.1
         with:

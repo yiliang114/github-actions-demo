@@ -1,0 +1,23 @@
+name: 'pkg-version demo'
+
+on:
+  schedule:
+    - cron: '0 21 * * *'
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout codes'
+        uses: actions/checkout@v1
+      - name: pkg-version
+        id: pkgVersion
+        uses: yiliang114/pkg-version@0.0.2
+
+      - name: Wechat Work Robot Message
+        uses: fifsky/wechat-work-action@v0.0.1
+        with:
+          url: ${{ secrets.WECHATWORK_WEBHOOK}}
+          type: markdown
+          content: |
+            pkg-version .version }}

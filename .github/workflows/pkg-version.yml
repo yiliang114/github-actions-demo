@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v1
       - name: pkg-version
         id: pkgVersion
-        uses: yiliang114/pkg-version@0.0.2
+        uses: yiliang114/pkg-version@latest
 
       - name: Wechat Work Robot Message
         uses: fifsky/wechat-work-action@v0.0.1
